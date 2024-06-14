@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard';
 import OriginalUrl from './Pages/OriginalUrl';
 import Home from './Pages/Home';
 import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,7 +38,7 @@ const logout=()=>{
 <Route path='/shortingurl' element={isLoggedIn ? <OriginalUrl /> : <Navigate to="/" />}/>
 
       </Routes>
-      
+      <Footer/>
       </BrowserRouter>
     </div>
   );
