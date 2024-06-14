@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 const OriginalUrl = () => {
     const [originalUrl, setOriginalUrl] = useState('');
-    const [shortenedUrl, setShortenedUrl] = useState('');
     const [fullShortenedUrl, setFullShortenedUrl] = useState(''); // State to store the full shortened URL
     const [msg, setMsg] = useState('');
     const [toast, setToast] = useState(false);
@@ -21,9 +20,13 @@ const OriginalUrl = () => {
             const res = await axios.post('https://url-shorten-backend.onrender.com/api/url/shorten', payload, { headers });
             const shortUrl = res.data.shortUrl;
             const fullUrl = `https://url-shorten-backend.onrender.com/api/url/${shortUrl}`; // Construct full URL
-            setMsg(`Shortened URL: ${fullUrl}`);
+            setMsg(`Url shrinked successfully`);
+
+            setTimeout(() => {
             setToast(true);
-            setShortenedUrl(shortUrl);
+                
+            }, 1000)
+            setToast(false)
             setFullShortenedUrl(fullUrl);
             setOriginalUrl('');
         } catch (err) {
@@ -48,7 +51,6 @@ const OriginalUrl = () => {
             <h1 className='title'>URL Shortener</h1>
             <div className="card-center m-3">
                 <div className="card card-format text-center">
-                    {/* Form to Shorten URL */}
                     <form onSubmit={handleShortenSubmit}>
                         <div className="row">
                             <div className="row-cols-sm-2">
@@ -63,7 +65,6 @@ const OriginalUrl = () => {
                         </button>
                     </form>
 
-                    {/* Display Shortened URL */}
                     {fullShortenedUrl && (
                         <div className="row mt-3">
                             <div className="row-cols-sm-2">

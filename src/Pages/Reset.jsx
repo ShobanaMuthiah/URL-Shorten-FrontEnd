@@ -14,11 +14,11 @@ const {token}=useParams();
 const handleSubmit=async(e)=>{
     e.preventDefault();
     const payload={password}
-    await axios.post(`http://localhost:5000/api/auth/reset-password/${token}`,payload)
+    await axios.post(`https://url-shorten-backend.onrender.com/api/auth/reset-password/${token}`,payload)
     .then(res=>{setmsg(res.data.message)
 settoast(true)
         setTimeout(() => {
-            navig('/courses')
+            navig('/shortingurl')
             login();
             
         }, 1000);

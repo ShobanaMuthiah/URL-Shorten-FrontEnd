@@ -9,7 +9,7 @@ const [msg,setmsg]=useState('');
 const [toast,settoast]=useState(false)
 const navig=useNavigate()
 const handlePassword=async (e)=>{
-    navig('/forgotpassword')   
+    navig('/forgot-password')   
     
 }
 
@@ -21,7 +21,8 @@ const handleSubmit=async(e)=>{
         localStorage.setItem('token', res.data.token);
 settoast(true)
         setTimeout(() => {
-            navig('/shortingurl')
+            navig('/shortingurl');
+            login();
         }, 1000);
             setemail('');
             setpassword('');
