@@ -14,7 +14,7 @@ const App = () => {
       <BrowserRouter>
       <Routes>
 <Route path='/register' element={<Register/>}/>
-<Route path='/activate' element={<EmailActivation/>}/>
+<Route path='/activate/:token' element={<EmailActivation/>}/>
 <Route path='/login' element={<Login/>}/>
 <Route path='/forgot-password' element={<ForgotPassword/>}/>
 <Route path='/reset-password' element={<Reset/>}/>

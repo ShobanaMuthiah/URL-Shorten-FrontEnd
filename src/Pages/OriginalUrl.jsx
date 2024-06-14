@@ -18,9 +18,9 @@ const OriginalUrl = () => {
         };
         const payload = { originalUrl };
         try {
-            const res = await axios.post('http://localhost:5000/api/url/shorten', payload, { headers });
+            const res = await axios.post('https://url-shorten-backend.onrender.com/api/url/shorten', payload, { headers });
             const shortUrl = res.data.shortUrl;
-            const fullUrl = `http://localhost:5000/api/url/${shortUrl}`; // Construct full URL
+            const fullUrl = `https://url-shorten-backend.onrender.com/api/url/${shortUrl}`; // Construct full URL
             setMsg(`Shortened URL: ${fullUrl}`);
             setToast(true);
             setShortenedUrl(shortUrl);

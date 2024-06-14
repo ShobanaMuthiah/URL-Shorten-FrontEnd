@@ -16,8 +16,8 @@ const handlePassword=async (e)=>{
 const handleSubmit=async(e)=>{
     e.preventDefault();
     const payload={email,password}
-    await axios.post('http://localhost:5000/api/auth/login',payload)
-    .then(res=>{setmsg(res.data.message)
+    await axios.post('https://url-shorten-backend.onrender.com/api/auth/login',payload)
+    .then(res=>{setmsg('Login successfully')
         localStorage.setItem('token', res.data.token);
 settoast(true)
         setTimeout(() => {
