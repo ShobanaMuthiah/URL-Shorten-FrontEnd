@@ -1,25 +1,54 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const EmailActivation = () => {
-  const navig=useNavigate()
-    return (
-        <div>
-     <div className="card-center ">
-     <div className="card card-format text-center p-4 ">
-  <div className="card-header">
-    Verification
-  </div>
-  <div className="card-body">
-    <p className="card-title fa"><i className="fa fa-check-square-o" aria-hidden="true"></i></p>
-    <p className="card-text">Your Mail ID has been verified Successfully</p>
-    <Link to={navig('/login')} className="btn btn-success text-black">Click here to Login</Link>
-  </div>
-</div>
-     </div>
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
+  const { token } = useParams();
 
+  useEffect(() => {
+    const activateAccount = async () => {
+      try {
+        const response = await axios.get(`https://url-shorten-backend.onrender.com/api/auth/activate/${token}`);
+        setMessage(response.data.message);
+        setError(false);
+      } catch (err) {
+        setMessage('Failed to activate the account. The token might be invalid or expired.');
+        setError(true);
+      }
+    };
+
+    activateAccount();
+  }, [token]);
+
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
+  return (
+    <div>
+      <div className="card-center">
+        <div className="card card-format text-center p-4">
+          <div className="card-header">
+            Verification
+          </div>
+          <div className="card-body">
+            <p className="card-title fa">
+              <i className="fa fa-check-square-o" aria-hidden="true"></i>
+            </p>
+            <p className="card-text">{message}</p>
+            {!error && (
+              <button onClick={handleLoginClick} className="btn btn-success text-black">
+                Click here to Login
+              </button>
+            )}
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default EmailActivation;

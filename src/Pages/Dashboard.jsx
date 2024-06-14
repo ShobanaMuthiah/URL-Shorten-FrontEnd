@@ -19,7 +19,7 @@ const Dashboard = () => {
       };
 
       try {
-        const res = await axios.get('http://localhost:5000/api/dashboard/data', { headers });
+        const res = await axios.get('https://url-shorten-backend.onrender.com/api/dashboard/data', { headers });
         setData(res.data);
       } catch (err) {
         setMsg(err.response?.data || 'Error fetching dashboard data');
