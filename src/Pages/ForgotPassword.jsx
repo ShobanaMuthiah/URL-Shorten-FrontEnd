@@ -10,7 +10,7 @@ const [toast,settoast]=useState(false)
 const handleSubmit=async(e)=>{
     e.preventDefault();
     const payload={email}
-    await axios.post('http://localhost:5000/api/auth/forgot-password',payload)
+    await axios.post('https://url-shorten-backend.onrender.com/api/auth/forgot-password',payload)
     .then(res=>{setmsg(res.data.message)
         settoast(true)
 
