@@ -1,3 +1,14 @@
+# URL-Shoterner
+##### User Pages
+* Register
+* Activation
+* login
+* forgot password
+* reset password
+##### Url Pages
+* Shorten url
+* Dashboard
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
