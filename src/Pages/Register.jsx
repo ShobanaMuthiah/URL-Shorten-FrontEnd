@@ -9,7 +9,6 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
   const [toast, setToast] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,8 +24,6 @@ const Register = () => {
         setLastName('');
         setEmail('');
         setPassword('');
-        // Instead of navigating to login, inform the user to check their email
-        setMsg('Please check your email for the activation link.');
       }, 1000);
     } catch (error) {
       setMsg(error.response?.data?.message || 'Registration failed');
